@@ -11,7 +11,7 @@ apt-cache policy exodus > versioncheck.txt
 
 # compare installed vs candidate
 
-current=$(lynx -dump https://www.exodus.com/releases/index.html | grep "new in" | awk '{print $4}')
+current=$(lynx -dump https://www.exodus.com/releases/index.html | grep "new in" | tr -d [:upper:] | tr -d [:lower:] | awk '{print $2}')
 
 installed=$(grep Installed versioncheck.txt | awk '{print $2}' | sed 's/.\{2\}$//')
 
@@ -23,10 +23,10 @@ if [ "$current" != "$installed" ]
   then
     echo "New Version Available - Installing"
     # Download version in "no clobber mode"
-    wget -nc https://downloads.exodus.com/releases/exodus_${current}_amd64.deb
+    wget -nc https://downloads.exodus.com/releases/exodus-linux-x64-${current}.deb
 
     # Now let's install
-    sudo dpkg -i exodus_${current}_amd64.deb
+    sudo dpkg -i exodus-linux-x64-${current}.deb
     # Now cleanup
     rm *.deb
   else
