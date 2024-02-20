@@ -1,6 +1,6 @@
 # exodus_wallet_updater_linux
 A bash script to update the Exodus cryptocurrency wallet for linux.
-Tested on Ubuntu 20.04
+Tested on Ubuntu 22.10
 
 This script requires that you have lynx installed.  
 
