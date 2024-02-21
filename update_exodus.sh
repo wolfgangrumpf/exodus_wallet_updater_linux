@@ -4,6 +4,12 @@
 # To run:  ./update_exodus.sh <version>, e.g.:
 # ./update_exodus.sh 21.3.12
 
+# First see if lynx is install
+if ! command -v lynx &> /dev/null
+then
+    echo "Please install lynx before executing this script - exiting now"
+    exit 1
+fi
 
 # Version check - make sure we are actually downloading/installing a new version
 
